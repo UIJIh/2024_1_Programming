@@ -1,5 +1,0 @@
-datetime,texts,sentiment
-2024-05-22,"My day was hectic but productive. Back-to-back meetings in the morning, a quick lunch at my desk, and then spent the afternoon working on a big project. Managed to squeeze in a workout before dinner. Now I'm winding down with a good book.","{'positive': 0.92, 'neutral': 0.07, 'negative': 0.01}"
-2024-05-06,Oh.. I don't really feel going to school today. Should I go every time? But I won the soccor today that made me happy.,"{'negative': 0.53, 'neutral': 0.28, 'positive': 0.19}"
-2024-05-05,Yayy!! Children's day!! I have a lot to say about how today was. BUT I am having still a party. so..then next time!,"{'positive': 0.98, 'neutral': 0.02, 'negative': 0.0}"
-2024-05-02,"My day was busy but fulfilling. Got the kids ready for school, did some house chores, and ran a few errands. In the afternoon, I helped the kids with their homework and made dinner. Now I'm enjoying some quiet time with a cup of tea.","{'positive': 0.94, 'neutral': 0.06, 'negative': 0.0}"
