@@ -4,8 +4,8 @@
 ## NLP Models used
    - RoBERTa trained on twitter dataset for Setiment Analysis
    - Fine-Tuned T5 Small for Text Summarization
-   - Stable Diffusion (text-to-image)
-   - Groq API for Text Generation and Summarization
+   - Stable Diffusion for Text-to-Image Generation
+   - Groq API for Text Generation and Summarization (llama3-8b-8192)
 
 ## GUI
    - TKinter
