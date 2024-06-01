@@ -11,4 +11,4 @@
    - TKinter
 
 ## Music Integration
-   - pygame
+   - Pygame
