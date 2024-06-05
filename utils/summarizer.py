@@ -79,7 +79,7 @@ def summarizer(diary, client, model, task):
         # 감정 점수
         diary['sentiment_numeric'] = diary['sentiment'].apply(sentiment_to_numeric)
         # 달(month) 정보를 기준으로 그룹화
-        grouped = diary.groupby(pd.Grouper(key='datetime', freq='ME'))
+        grouped = diary.groupby(pd.Grouper(key='datetime', freq='M')) # mac에서 'ME'하면 오류뜸 WARNING 무시해도 괜찮!!
         # 월별 요약 데이터를 저장할 리스트
         monthly_summaries = []
         for _, group_data in grouped:
