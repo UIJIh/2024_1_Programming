@@ -4,7 +4,7 @@ from scipy.special import softmax
 
 def preprocess(text):
     """
-    텍스트를 전처리하여 사용자 태그(@user)와 URL(http)을 일반화합니다.
+    텍스트를 전처리하여 사용자 태그(@user)와 URL(http)을 일반화합니다. (허깅페이스 오픈소스)
     
     매개변수:
         text (str): 원본 텍스트 문자열

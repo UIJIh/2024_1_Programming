@@ -76,6 +76,8 @@ def summarizer(diary, client, model, task):
     if task == 'monthly':
         # datetime 형식으로 변환
         diary['datetime'] = pd.to_datetime(diary['datetime'], format="%Y-%m-%d")
+        # 감정 점수
+        diary['sentiment_numeric'] = diary['sentiment'].apply(sentiment_to_numeric)
         # 달(month) 정보를 기준으로 그룹화
         grouped = diary.groupby(pd.Grouper(key='datetime', freq='ME'))
         # 월별 요약 데이터를 저장할 리스트

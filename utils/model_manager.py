@@ -50,10 +50,8 @@ def load_stable_diffusion():
     """
     # GPU 사용 가능 여부를 확인
     if not torch.cuda.is_available():
-        # GPU가 없으면 None을 반환
-        #print("GPU is not available. Returning None.")
-        return None, None    
-    
+        return None, None
+
     try:
         # 기본 모델 로드
         base = DiffusionPipeline.from_pretrained(
@@ -63,7 +61,7 @@ def load_stable_diffusion():
             use_safetensors=True  # 안전한 텐서 사용
         )
         base.to("cuda")  # 모델을 GPU로 이동
-        
+
         # 보정 모델 로드
         refiner = DiffusionPipeline.from_pretrained(
             "stabilityai/stable-diffusion-xl-refiner-1.0",
@@ -74,10 +72,10 @@ def load_stable_diffusion():
             variant="fp16",
         )
         refiner.to("cuda")  # 모델을 GPU로 이동
-        
+
         return base, refiner
         
     except Exception as e:
-        # 모델 로드 중 오류가 발생하면 에러 메시지 출력
-        print(f"Error loading models: {e}")
+        # 모델 로딩 중 예외가 발생하면 None 반환
+        #print(f"Error occurred while loading models: {e}")
         return None, None

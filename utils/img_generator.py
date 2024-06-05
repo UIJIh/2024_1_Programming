@@ -16,12 +16,12 @@ def text_to_image_base64(base, refiner, texts):
         img_str: Base64로 인코딩된 이미지 문자열
     """
     prompt = texts  # 텍스트 프롬프트를 설정
-    n_steps = 20  # 추론 단계 수 (적은 수로 설정하여 빠르게 처리)
-    high_noise_frac = 0.5  # 노이즈 비율 (매끄럽게 처리하기 위함)
+    n_steps = 100  # 추론 단계 수
+    high_noise_frac = 0.9  # 노이즈 비율 (매끄럽게 처리하기 위함)
     
     # 기본 모델을 사용하여 이미지 생성 (잠재 공간에서의 이미지 생성)
     image = base(
-      prompt=prompt,
+      prompt="A painting of" + prompt, # 프롬프팅
       num_inference_steps=n_steps,
       denoising_end=high_noise_frac,
       output_type="latent",  # 잠재 공간에서의 이미지 출력
@@ -29,7 +29,7 @@ def text_to_image_base64(base, refiner, texts):
     
     # 보정 모델을 사용하여 생성된 이미지를 개선
     image = refiner(
-      prompt=prompt,
+      prompt="A painting of" + prompt, # 프롬프팅
       num_inference_steps=n_steps,
       denoising_start=high_noise_frac,
       image=image,
@@ -40,7 +40,7 @@ def text_to_image_base64(base, refiner, texts):
     image.save(buffered, format="JPEG")  # 이미지 데이터를 JPEG 포맷으로 버퍼에 저장
     img_str = base64.b64encode(buffered.getvalue()).decode()  # 버퍼의 바이트 데이터를 Base64 문자열로 인코딩
     
-    return image, img_str
+    return img_str
 
 def decode_image_base64(img_str):
     """

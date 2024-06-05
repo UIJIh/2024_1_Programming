@@ -58,7 +58,7 @@ class DiaryService(tk.Tk):
 
         pygame.init()  # 모든 pygame 모듈 초기화
         pygame.mixer.init()  # pygame의 mixer 모듈 초기화
-        
+          
     # 텍스트(메인 제목) 반짝거리는 효과
     def flash_text(self):
         # 만약 title_label이 존재하고 위젯이 유효하면
@@ -179,7 +179,7 @@ class DiaryService(tk.Tk):
             new_diary = pd.DataFrame([{'datetime': date, 'texts': generated_texts, 'sentiment': sentiment_scores, 'pic': 'no img'}])
         else:
             # 텍스트를 이미지로 변환하고 base64 인코딩 (모델)
-            image, image_base64 = text_to_image_base64(self.img_generator_base, self.img_generator_refiner, texts)
+            image_base64 = text_to_image_base64(self.img_generator_base, self.img_generator_refiner, texts)
             new_diary = pd.DataFrame([{'datetime': date, 'texts': generated_texts, 'sentiment': sentiment_scores, 'pic': image_base64}])
         # 새로운 일기를 기존 일기 데이터프레임에 추가
         self.diary = pd.concat([self.diary, new_diary], ignore_index=True)
@@ -261,9 +261,10 @@ class DiaryService(tk.Tk):
             else:
                 # base64 인코딩된 이미지를 디코딩하여 설정
                 selected_image = decode_image_base64(selected_image)
-                selected_image = Image.open(selected_image)
+                #selected_image = Image.open(selected_image)
                 selected_image = selected_image.resize((300, 300), Image.LANCZOS) # 항상 사이즈 맞춤
                 selected_image = ImageTk.PhotoImage(selected_image)
+                #print("오예 성공!")
             
             # 선택한 일기를 새 창에 표시
             self.show_entry_window(selected_date, selected_texts, selected_sentiment, selected_image)

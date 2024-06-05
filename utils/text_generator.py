@@ -1,4 +1,3 @@
-#from utils.model_manager import load_groq_api
 
 def generate_texts(client, user_input, temperature=0.7):
     """
@@ -11,10 +10,7 @@ def generate_texts(client, user_input, temperature=0.7):
     
     반환값:
         generated_text (str): 생성된 일기 텍스트
-    """
-    # Groq API 클라이언트를 로드 (현재 주석 처리됨)
-    #client = load_groq_api()
-    
+    """    
     # 생성 요청을 만듭니다.
     completion = client.chat.completions.create(
         model="llama3-8b-8192",  # 사용할 언어 모델 지정
